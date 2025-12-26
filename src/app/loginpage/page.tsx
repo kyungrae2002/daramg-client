@@ -7,7 +7,7 @@ import Link from 'next/link';
 import ToastNotification from '../../components/ToastNotification';
 import { useUserProfileStore } from '../../store/userProfileStore';
 
-const loginpage = () => {
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -32,8 +32,6 @@ const loginpage = () => {
     //보안위험**************
     if (email.trim() === 'admin@gmail.com' && password === 'admin1234!') {
       setToast({ show: true, message: '관리자 계정으로 로그인되었습니다.' });
-      // 임시 JWT (exp: 24시간 후)
-      const exp = Math.floor(Date.now() / 1000) + 60 * 60 * 24;
       // 유니코드 안전 base64 인코딩 함수
       function base64EncodeUnicode(str: string) {
         return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (_, p1) =>
@@ -269,4 +267,4 @@ const loginpage = () => {
   );
 };
 
-export default loginpage;
+export default LoginPage;

@@ -75,7 +75,7 @@ export default function WritePage() {
 
         // For demonstration: log FormData entries
         console.log('--- Form Data to be Sent ---');
-        for (let [key, value] of formData.entries()) {
+        for (const [key, value] of formData.entries()) {
             console.log(`${key}:`, value);
         }
         console.log('--------------------------');
