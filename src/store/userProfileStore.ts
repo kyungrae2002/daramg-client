@@ -19,7 +19,7 @@ interface RegistrationData {
   profile: {
     nickname: string;
     bio?: string;
-    profileImage?: string;
+    profileImage?: string | null;
   };
 }
 
