@@ -1,4 +1,7 @@
 'use client'
+
+import { use } from 'react';
+
 // --- Mock Data (for development before API connection) ---
 const mockPosts: Post[] = [
   {
@@ -151,8 +154,12 @@ function PostItem({ post }: { post: Post }) {
 }
 
 // --- Main Page Component ---
-export default function ComposerTalkPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default function ComposerTalkPage({ params }: PageProps) {
+  const { id } = use(params);
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
 
