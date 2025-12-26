@@ -19,13 +19,19 @@ const commentStore: Record<string, Comment[]> = {};
 // NOTE (Next.js 15): context.params is now async in route handlers for dynamic segments.
 // You must await it before accessing properties, otherwise you'll see the
 // warning: "`params` should be awaited before using its properties."
+interface CommentRequest {
+  content?: unknown;
+  parentId?: number | null;
+  author?: string;
+}
+
 export async function POST(
   req: Request,
   context: { params: Promise<{ postId: string }> }
 ) {
   const { postId } = await context.params;
   try {
-    const body = await req.json();
+    const body: CommentRequest = await req.json();
     const { content, parentId, author = '익명다람쥐' } = body || {};
     if (!content || typeof content !== 'string') {
       return NextResponse.json({ error: '내용이 비어있습니다.' }, { status: 400 });
