@@ -1,19 +1,21 @@
 'use client';
 
+import { use } from 'react';
 import Header from './components/Header';
 import InfoBanner from './components/InfoBanner';
 import SearchFilterBar from './components/SearchFilterBar';
 import PostList from './components/PostList';
 import WriteButton from '@/components/WriteButton';
 
-export default function FreeTalkPage({
-  searchParams,
-}: {
-  searchParams?: {
+interface PageProps {
+  searchParams?: Promise<{
     search?: string;
-  };
-}) {
-  const searchTerm = searchParams?.search || '';
+  }>;
+}
+
+export default function FreeTalkPage({ searchParams }: PageProps) {
+  const params = searchParams ? use(searchParams) : undefined;
+  const searchTerm = params?.search || '';
 
   return (
     <div className="relative w-full max-w-md mx-auto bg-gray-100 min-h-screen overflow-hidden">
