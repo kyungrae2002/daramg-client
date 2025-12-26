@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(./gradlew:*)"
+      "Bash(./gradlew:*)",
+      "Bash(find \"c:\\\\Users\\\\kyung\\\\OneDrive\\\\문서\\\\GitHub\\\\client2\\\\daramg-client\\\\src\\\\app\" -name \"page.tsx\" -type f -exec sh -c 'size=$\\(wc -c < \"\"$1\"\"\\); if [ \"\"$size\"\" -lt 10 ]; then echo \"\"$1\"\"; fi' _ {} ;)"
     ],
     "deny": [],
     "ask": []
